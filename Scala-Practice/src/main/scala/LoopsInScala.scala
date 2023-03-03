@@ -8,24 +8,30 @@ object LoopsInScala{
 
     var multiplier: Int = 0
 
-    // while loop practice
+    // !!!!!! WHILE LOOP PRACTICE !!!!!!
 
 //    while(multiplier <= 10){
 //      println("2"+"*"+ multiplier + "=" + multiplier * 2)
 //      multiplier = multiplier + 1
 
-    // for loop using (to) keyword practice.
+    // !!!!!! FOR LOOP USING (to) KEYWORD PRACTICE. !!!!!!!
 
 //    for(multiplier <- 1 to 10){
 //      println("2"+"*"+ multiplier + "=" + multiplier * 2)
 //    }
 
-    // for loop using (by) keyword practice.
+    // !!!!!!  FOR LOOP USING (by) KEYWORD PRACTICE.  !!!!!!!!
 
-    for(multiplier <- 1 until 11){
+//    for(multiplier <- 1 until 11){
+//      println("2"+"*"+ multiplier + "=" + multiplier * 2)
+//    }
+
+    // !!!!!  FOR LOOP USING FILTERING !!!!!!!
+
+    for(multiplier <- 1 to 10 if multiplier % 2 == 0){
+
       println("2"+"*"+ multiplier + "=" + multiplier * 2)
     }
-
   }
 }
 

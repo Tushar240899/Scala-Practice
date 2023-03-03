@@ -10,10 +10,9 @@ object ConditionalExpressions{
     else if(number == 0){
       println("number is not negative nor positive")
     }
-    else{
+    else {
       println("Number is positive")
 
     }
-
   }
 }
