@@ -29,11 +29,27 @@ class Customer(firstName: String)
 
 val customer = new Customer("Lupita")
 
-customer.firstName("asdasd")
+//customer.firstName("asdasd")
 
 3==3
 
 new String("Scala") == new String("Scala")
+
+
+
+
+var number1: Int = 23
+var number2: Int = 22
+
+if(number1 == number2){
+
+  println("Numbers are equal");
+}
+else{
+  println("Numbers are not equal")
+}
+
+
 
 
 
