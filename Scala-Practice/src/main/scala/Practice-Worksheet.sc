@@ -50,6 +50,31 @@ else{
 }
 
 
+val vector = Vector(1,2,3)
+
+val vector2 = Vector(4,5,6)
+
+val set =  Set(1,2,3)
+
+val set1 = Set(4,5,6)
+
+vector ++ vector2
+
+set ++ set1
+
+"Hello World".filter(char => List('a','e','i','o','u').contains(char))
+"Hello World".filterNot(char => List('a','e','i','o','u').contains(char))
+
+for {
+  n <- 1 to 3
+  m <- 1 to n
+} yield n*m
+
+for {
+  n <- 1 to 3 if n % 2 == 1
+  m <- 1 to n
+} yield n * m
+
 
 
 
