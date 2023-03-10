@@ -10,20 +10,20 @@ number2
 
 //number2 = 2
 
-class Student{
+class Student {
 
   val id: Int = 1;
   val name: String = "Tushar";
 
 }
 
-  object MainObject{
-    def main(args:Array[String]): Unit = {
-      val stud_object = new Student()
-      println(stud_object.id+""+stud_object.name)
-    }
-
+object MainObject {
+  def main(args: Array[String]): Unit = {
+    val stud_object = new Student()
+    println(stud_object.id + "" + stud_object.name)
   }
+
+}
 
 class Customer(firstName: String)
 
@@ -31,49 +31,74 @@ val customer = new Customer("Lupita")
 
 //customer.firstName("asdasd")
 
-3==3
+3 == 3
 
 new String("Scala") == new String("Scala")
-
-
 
 
 var number1: Int = 23
 var number2: Int = 22
 
-if(number1 == number2){
+if (number1 == number2) {
 
   println("Numbers are equal");
 }
-else{
+else {
   println("Numbers are not equal")
 }
 
 
-val vector = Vector(1,2,3)
+val vector = Vector(1, 2, 3)
 
-val vector2 = Vector(4,5,6)
+val vector2 = Vector(4, 5, 6)
 
-val set =  Set(1,2,3)
+val set = Set(1, 2, 3)
 
-val set1 = Set(4,5,6)
+val set1 = Set(4, 5, 6)
 
 vector ++ vector2
 
 set ++ set1
 
-"Hello World".filter(char => List('a','e','i','o','u').contains(char))
-"Hello World".filterNot(char => List('a','e','i','o','u').contains(char))
+"Hello World".filter(char => List('a', 'e', 'i', 'o', 'u').contains(char))
+"Hello World".filterNot(char => List('a', 'e', 'i', 'o', 'u').contains(char))
 
 for {
   n <- 1 to 3
   m <- 1 to n
-} yield n*m
+} yield n * m
 
 for {
   n <- 1 to 3 if n % 2 == 1
   m <- 1 to n
 } yield n * m
+
+
+val doubler: Int => Int = (x: Int) => x *2
+doubler(2)
+
+val doubler: String => String = (x: String) => x*2
+doubler("String")
+
+val number = (x:Int) => x+x
+
+number(4)
+
+// name : (parameters type) => return type = parameters name and type => body/expression.
+val number: (Int, Int) => String = (firstnumber: Int, secondNumber: Int)=> firstnumber*secondNumber+"abc"
+
+number(2,3)
+
+def greeting(name:String, age: Int): String = {
+  s"Hi, my name is $name and I am $age years old"
+}
+
+greeting("Tushar",23)
+
+
+
+
+
 
 
 
