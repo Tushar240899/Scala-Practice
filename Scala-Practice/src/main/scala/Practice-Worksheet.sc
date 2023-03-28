@@ -1,3 +1,6 @@
+import scala.::
+import scala.collection.immutable.List
+import scala.collection.mutable.ListBuffer
 
 // mutable variable using var
 var number = 100
@@ -96,9 +99,96 @@ def greeting(name:String, age: Int): String = {
 greeting("Tushar",23)
 
 
+// s interpolation
+val name = s"my name is tushar\nhello world"
+
+println("s interpolation example:---")
+
+println(s"$name")
+println(f"the number is ${2 + 9.54}%2.3f")
+
+val num = "the number is \n ${2 * 9.5}%2.2f"
+println(s"$num")
+
+// f interpolation
+
+val name = f"my name is tushar\nhello world"
+println("f interpolation example:---")
+
+println(f"$name")
+println(f"the number is \n ${2 + 9}")
+
+//raw interpolation
+val name = "my name is tushar\nhello world"
+println("raw interpolation example:---")
 
 
+println(raw"$name")
+println(raw"the number is \n ${2 + 9}")
 
+//val number = 44
+//
+//val numberString = number match{
+//
+//  case 1 => "first"
+//  case 2 => "Second"
+//  case 3 =>  number + "th"
+//  case _ => "anything"
+//
+//  println(numberString)
+//}
+
+val listPattern: List[List[Int]] = List(List(1,2,3,4,5))
+
+def listFunc(listPattern: List[List[Int]]): List[Int]={
+listPattern.flatMap {listOfString =>
+  listOfString.map { elements =>
+   elements
+  }
+} }
+
+println(listFunc(listPattern))
+
+
+val optionOfString: Option[List[Int]] = Some(List(1,2,3,4))
+
+//def func(optionOfInt: Option[List[Int]]): List[Int]={
+//optionOfInt.flatMap{list => list.map(
+//  option => option * 2)
+//}
+//}
+//println(func(optionOfString))
+
+
+val patternOfOption: Option[Option[String]] = Some(Some("String1"))
+//def optionPattern(patternOfOption: Option[Option[String]]): List[String]= {
+//
+//  patternOfOption.flatMap {
+//    optionOfString =>
+//      optionOfString.map(string => string)
+//  }
+//}
+//println(optionPattern(patternOfOption))
+//
+
+val list = List(1,2,3,4,5)
+
+println(list.filter(_ != 3))
+println(list.filter(_ % 2 == 0))
+
+list.head
+
+val number = 10
+
+val head :: tail = list
+
+println(head , tail)
+
+val url: String = "https://www.mywebsite.com/home"
+
+println(url.substring(0, url.indexOf("://")))
+println(url.substring(url.indexOf("://") + 3, url.indexOf("/", url.indexOf("://") + 3)))
+println(url.substring(url.indexOf("/", url.indexOf("://")+3)+1))
 
 
 
