@@ -14,7 +14,7 @@ class SynchronizedBlock extends Thread {
   }
 }
 
-object ScalaLocks extends App {
+object ScalaSynchronizedObject extends App {
 
   val synchronizedBlock = new SynchronizedBlock
   val synchronizedBlock2 = new SynchronizedBlock
