@@ -191,6 +191,32 @@ println(url.substring(url.indexOf("://") + 3, url.indexOf("/", url.indexOf("://"
 println(url.substring(url.indexOf("/", url.indexOf("://")+3)+1))
 
 
+val num1:Option[Int] = Some(4)
+val num2:Option[Int] = Some(6)
+val num3:Option[Int] = Some(10)
 
+val result = num1.flatMap { element1 =>
+  num2.flatMap{ element2 =>
+    num3.map {element3 => element1 + element2 + element3}
+  }
+}
+
+println(result)
+
+
+val list1 = List(1,2,3,4,5)
+val list2 = List(1,2,3,4,5)
+val list3 = List("a", "b", "c")
+
+// On same list
+list1 eq list2
+list1 == list2
+list1 equals list2
+
+// On different List
+
+list1 eq list3
+list1 == list3
+list1 equals list3
 
 
