@@ -1,11 +1,11 @@
 
 object Closure extends App {
 
-  private def multiplyBy(factor: Int) = (num: Int) => num * factor
+  private def operation(factor: Int) = (num: Int) => num * factor
 
-  val doubler = multiplyBy(20)
-  val tripler = multiplyBy(30)
+  val doubler = operation(2)
+  val tripler = operation(3)
 
-  println(doubler(2))
-  println(tripler(3))
+  println(doubler(10))
+  println(tripler(10))
 }

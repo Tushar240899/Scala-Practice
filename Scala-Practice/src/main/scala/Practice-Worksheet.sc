@@ -1,4 +1,6 @@
-
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration.DurationInt
+import scala.concurrent.{Await, Future}
 
 // mutable variable using var
 var number = 100
@@ -13,8 +15,8 @@ number2
 
 class Student {
 
-  val id: Int = 1;
-  val name: String = "Tushar";
+  val id: Int = 1
+  val name: String = "Tushar"
 
 }
 
@@ -212,6 +214,8 @@ list1 eq list2
 list1 == list2
 list1 equals list2
 
+
+
 // On different List
 
 list1 eq list3
@@ -229,5 +233,128 @@ list.headOption
 println(list.dropRight(1))
 println(list.dropRight(3))
 
-val set = Set(1,2,3,4)
-set()
+val set = Set(1, 2, 3, 4)
+set(1)
+
+try {
+  4 / 0
+}
+catch {
+  case e: Exception => e
+}
+
+val list: List[List[Int]] = List(List(1, 2, 3, 4), List(5, 6, 7, 8, 5))
+list.flatten
+
+val myList1 = List()
+
+11 :: myList1
+12 :: myList1
+
+def convert(list: List[String]): Future[List[Int]] = {
+
+  Future(list.map(string => string.length))
+  //or
+  //  Future(list.map(_.length))
+}
+
+println(convert(List("asd", "asdasd", "asdadasd")))
+
+def convert2(list: List[Future[String]]): Future[List[Int]] = {
+
+  Future.sequence(list).map { string => string.map(_.length) }
+
+}
+
+def capitalizeString(list: List[Future[String]]): Future[List[String]] = {
+
+  Future.sequence(list).map(strings => strings.map(_.toUpperCase()))
+
+}
+val futures = List(Future("asd"), Future("asdasd"), Future("asdadasd"))
+val result = Await.result(capitalizeString(futures), 20.seconds)
+
+
+def checkLetter(list: List[Future[String]]): Future[List[Boolean]] = {
+
+  Future.sequence(list).map(listOfStrings => listOfStrings.map(string => if (string.contains('a')) true else false))
+}
+
+val futures = List(Future("Tushar"), Future("steve"), Future("stark"), Future("bruce"))
+Await.result(checkLetter(futures), 20.seconds)
+
+def reverseString(list: List[Future[String]]): Future[List[String]] = {
+
+  Future.sequence(list).map(listOfStrings => listOfStrings.map(_.reverse))
+}
+
+val futures = List(Future("Tushar"), Future("steve"), Future("stark"), Future("bruce"))
+Await.result(reverseString(futures), 20.seconds)
+
+def pairedWithLength(list: List[Future[String]]): Future[List[(String, Int)]] = {
+
+  Future.sequence(list).map(listOfStrings => listOfStrings.map(strings => (strings, strings.length)))
+}
+
+val futures = List(Future("Tushar"), Future("steve"), Future("stark"), Future("bruce"))
+Await.result(pairedWithLength(futures), 20.seconds)
+
+
+val future = Future(9 / 3)
+
+Await.result(future, 20.seconds)
+Await.ready(future, 20.seconds)
+
+//future.recover()
+
+
+def listOfListOfListString(list: List[List[List[String]]]): List[Future[List[(String, Int)]]] = {
+
+  List(Future {
+    list.flatMap {
+      listOfListOfString =>
+        listOfListOfString.flatMap {
+          listOfString =>
+            listOfString.map(string => (string, string.length))
+        }
+    }
+  }
+  )
+}
+listOfListOfListString(List(List(List("Tushar", "Steve", "Stark", "Bruce"))))
+
+
+def listOfListOfFutureOfListString(list: List[Future[String]]): List[Future[List[String]]] = {
+
+  List(Future.sequence(list))
+
+}
+
+def sumOfAllIntegers(list: List[List[Int]]): Int = {
+
+  list.flatMap {
+    listOfIntegers => listOfIntegers
+  }.fold(0)(_ + _)
+
+}
+
+sumOfAllIntegers(List(List(1, 2, 3, 4, 5)))
+
+
+def removeDuplicatesAndSort(list: List[List[String]]): List[String] = {
+
+  list.flatMap(listOfString => listOfString.distinct.sorted)
+}
+
+removeDuplicatesAndSort(List(List("Tushar", "Tushar", "Stark", "Steve", "Bruce")))
+
+def sumOfTupleInteger(list: List[List[(Int, Int)]]): Int = {
+
+  list.flatMap(listOfTuple => listOfTuple.map(_._1)).sum
+}
+
+sumOfTupleInteger(List(
+  List((1, 2), (3, 4)),
+  List((5, 6), (7, 8)),
+  List((9, 10), (11, 12))
+))

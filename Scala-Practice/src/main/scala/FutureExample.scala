@@ -1,5 +1,5 @@
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.DurationInt
 
 //class FutureExample {
@@ -59,16 +59,16 @@ object FutureExample extends App {
   //  val num3 = Future(7)
   //  println(futureExample.getForYieldOperations(num, num1, num2, num3))
   //
-  //  val re = futureExample.getFlatMappedValue(num3, num)
-    Await.result(re, 4.seconds)
-
-  //  println(futureExample.getAwaitedValues(Future(8)))
-
-
-  val futures = Seq(Future {1 }, Future { 2 }, Future {3})
-  val futureSeq = Future.sequence(futures)
-
-  println(futureSeq)
+//    val re = futureExample.getForYieldOperationsFlatMappedValue(num3, num)
+//    Await.result(re, 4.seconds)
+//
+//  //  println(futureExample.getAwaitedValues(Future(8)))
+//
+//
+//  val futures = Seq(Future {1 }, Future { 2 }, Future {3})
+//  val futureSeq = Future.sequence(futures)
+//
+//  println(futureSeq)
 
 
 }
