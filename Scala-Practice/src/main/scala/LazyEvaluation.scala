@@ -31,6 +31,4 @@ object main1 extends App{
   if(divide.isDefinedAt(6)) {
     println(divide(5))
   }
-
-
 }

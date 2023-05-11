@@ -1,6 +1,7 @@
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration.DurationInt
+import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
+import scala.util.{Failure, Success}
 
 // mutable variable using var
 var number = 100
@@ -268,7 +269,7 @@ def convert2(list: List[Future[String]]): Future[List[Int]] = {
 
 def capitalizeString(list: List[Future[String]]): Future[List[String]] = {
 
-  Future.sequence(list).map(strings => strings.map(_.toUpperCase()))
+  Future.sequence(list).map(listOfString => listOfString.map(string => string.toUpperCase()))
 
 }
 val futures = List(Future("asd"), Future("asdasd"), Future("asdadasd"))
@@ -358,3 +359,92 @@ sumOfTupleInteger(List(
   List((5, 6), (7, 8)),
   List((9, 10), (11, 12))
 ))
+
+def filterOdd(list: List[List[Int]]): List[Int] = {
+
+  list.flatMap(listOfIntegers => listOfIntegers.filter(_ % 2 != 0))
+}
+
+filterOdd(List(List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)))
+
+
+def listContainsA(list: List[List[String]]): List[String] = {
+
+  list.flatMap(listOfString => listOfString.filterNot(_.contains('a')))
+}
+
+listContainsA(List(List("Tushar", "Steve", "Stark", "Wanda")))
+
+'a' * 2
+
+
+List(List(1, 2, 3, 4), List(4, 3, 2, 5, 3)).flatten
+
+List(List('a')) :+ List('a')
+
+val list = List('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
+list.span(_ == 'a')
+
+val myListOfLists = List(List('a', 'b', 'c'), List('d', 'e'), List('f', 'g', 'h'), List('d', 'e'), List('i', 'j', 'k', 'l'), List('m', 'n'), List('o'))
+
+myListOfLists.minBy(_.length)
+myListOfLists.patch(myListOfLists.indexOf(myListOfLists.minBy(_.length)), Nil, 1)
+
+
+abstract class Pet(name: String) {
+  def speak: Unit = println(s"my name is $name")
+}
+
+class Dog(name: String) extends Pet(name)
+
+val dog = new Dog("Shiro")
+dog.speak
+
+val list = List(1, 2, 3, 4, 5)
+val list2 = List(7, 8, 9, 0)
+
+
+
+list.foreach(println)
+
+11 :: list
+
+list :+ 11
+
+list ++ list2
+list :: list2
+list ::: list2
+
+val set1 = Set(1, 2, 3)
+val set2 = Set(4, 5, 6)
+
+set1 ++ list
+
+val listCollect = List(1, 2, 3, 4, "Five", "Six", "seven", 8, 9)
+
+val result = listCollect.collect {
+  case element: Int => element * 2
+
+}
+val string = "FiivveeF" // List(2,2,2,2,2,2,2,2)
+
+val listOfOccurence: List[Int] = List()
+
+string.foreach { char =>
+  listOfOccurence :+  string.count(_ == char)
+
+}
+println(listOfOccurence)
+
+
+val nums = Array(-1,-1,-1,1,1,1)
+nums.sum
+
+val index = 6
+nums.length
+nums.slice(0, index).sum
+nums.slice(index+1, nums.length).sum
+
+val string = "ASdasd"
+string.indexOf('a')
+string.length
